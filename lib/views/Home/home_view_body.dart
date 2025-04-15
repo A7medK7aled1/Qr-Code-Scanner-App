@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/views/QRScan/qr_code_scan.dart';
+import 'package:flutter_application_1/views/QRcodegenerator/qr_code_generator.dart';
 
 import 'widgets/custom_app_bar.dart';
 
@@ -19,14 +21,24 @@ class HomeViewBody extends StatelessWidget {
                 children: [
                   CustomElvetedButton(
                     text: "Scan QR Code",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const QrCodeScan()));
+                    },
                   ),
                   const SizedBox(
                     width: 20,
                   ),
                   CustomElvetedButton(
                     text: "Generate QR Code",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const QrCodeGenerator()));
+                    },
                   )
                 ],
               )
