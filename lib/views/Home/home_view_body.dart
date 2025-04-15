@@ -11,7 +11,9 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(),
+        appBar: CustomAppBar(
+          title: "QR Code",
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
