@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,19 +16,21 @@ class QrCodeScan extends StatefulWidget {
 }
 
 class _QrCodeScanState extends State<QrCodeScan> {
-  var data;
+  ScanResult? data;
+  String? scannedData;
 
   Future<void> scanBarcode() async {
     try {
       data = await BarcodeScanner.scan();
 
-      if (data.rawContent.isNotEmpty) {
-        print('Scanned Data: ${data.rawContent}');
+      if (data?.rawContent?.isNotEmpty ?? false) {
+        scannedData = data?.rawContent;
+        setState(() {});
       } else {
-        print('No barcode scanned.');
+        scannedData = "No data";
       }
     } catch (e) {
-      print('Error: $e');
+      scannedData = "Error: $e";
     }
   }
 
@@ -42,7 +45,7 @@ class _QrCodeScanState extends State<QrCodeScan> {
               const SizedBox(
                 height: 20,
               ),
-              Text(data),
+              Text(scannedData ?? "No data"),
               const SizedBox(
                 height: 20,
               ),
